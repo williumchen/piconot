@@ -7,48 +7,35 @@ import picolib.maze.Maze
 import picolib.semantics._
 
 object ourDSL extends App {
-
-  state("0") {
-    /**
-     * N*** go West state 3
-     *
-     */
-    List(
-      ShortRule(
-        Surroundings(Anything, Anything, Open, Anything),
-        West,
-        State("0")),
-      ShortRule(
-        Surroundings(Anything, Anything, Blocked, Anything),
-        StayHere,
-        State("1")))
+  def state(stateName: State)(moves: ShortRule*): Seq[Rule] = {
+    moves.map(r => Rule(stateName, r.s, r.m, r.state))
   }
 
-  val s = (Surroundings(Anything, Anything, Open, Anything),
-    StayHere,
-    State("0"))
-
-
-  def state(state: => String)(function: => List[ShortRule]): List[Rule] = {
-
-    for (i <- 0 to function.length) {
-
-    }
-
-    return Nil
+  def testRules(rules: Seq[Rule]){
+    println(rules.length)
   }
-
-  def rule(state: String, short: ShortRule): Rule = {
-    Rule(State(state), short.surr, short.action, short.state)
+  
+  //def move(): MoveDirection = return Nil
+   implicit def tupletoShortRule(tuple: (MoveDirection, Surroundings, State)): ShortRule = {
+    ShortRule(m = tuple._1, s = tuple._2, state = tuple._3)
   }
+  implicit def stringToState(state: String): State = State(state)
 
+  // Testing purposes
+  val defaultSurrounding: Surroundings = Surroundings(Anything, Anything, Anything, Anything)
+  val defaultMove: MoveDirection = StayHere
+  val defaultState: State = State("Default")
+  val defaultRule: Rule = Rule(
+    defaultState,
+    defaultSurrounding,
+    defaultMove,
+    defaultState)
+    
+  val test1 = state("asdf")(
+        (defaultMove, defaultSurrounding, defaultState),
+        (defaultMove, defaultSurrounding, defaultState)
+  )
+  testRules(test1)
 }
 
-case class ShortRule(surr: Surroundings, action: MoveDirection, state: State) {
-
-  implicit def stuffToShortRule(surr: Surroundings, action: MoveDirection, state: State) = ShortRule(surr, action, state)
-
-  def isItShort(): Boolean = {
-    return true
-  }
-}
+case class ShortRule(m: MoveDirection, s: Surroundings, state: State)
