@@ -82,7 +82,7 @@ object ourDSL extends App {
   }
 
   val test1 = state("start")(
-    (blocked(East, West) + open(North), move(left), to("corner")),
+    (blocked(East, West) & open(North), move(left), to("corner")),
     (open(North, West), move(left), to("corner")))
 
   testRules(test1)
@@ -114,5 +114,9 @@ case class OurSurroundings(north: RelativeDescription, east: RelativeDescription
     }
 
     Surroundings(pickDir(this.north, other.north), pickDir(this.east, other.east), pickDir(this.west, other.west), pickDir(this.south, other.south))
+  }
+  
+  def &(other: OurSurroundings): Surroundings = {
+    this+other
   }
 }
