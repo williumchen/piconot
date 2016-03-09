@@ -101,5 +101,4 @@ object EmptyRoom extends JFXApp {
   stage = EmptyBot.mainStage
 
   EmptyBot.run()
-
 }
