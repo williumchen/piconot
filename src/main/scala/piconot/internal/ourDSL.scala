@@ -16,6 +16,7 @@ import picolib.semantics._
  */
 
 class ourDSL extends JFXApp {
+ 
   // Initializes the picobot and runs graphics display
   def picobot(mazeName: String)(rules: Seq[Rule]*) = {
     val rulesList = rules.flatten.toList
