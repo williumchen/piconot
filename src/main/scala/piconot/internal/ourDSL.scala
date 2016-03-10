@@ -16,29 +16,16 @@ import picolib.semantics._
  */
 
 class ourDSL extends JFXApp {
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
   // Initializes the picobot and runs graphics display
   def picobot(mazeName: String)(rules: Seq[Rule]*) = {
     val rulesList = rules.flatten.toList
     val maze = Maze("resources" + File.separator + mazeName + ".txt")
-<<<<<<< HEAD
     object EmptyBot extends Picobot(maze,rulesList)
-=======
-    object EmptyBot extends Picobot(maze, rulesList)
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
       with TextDisplay with GUIDisplay
     stage = EmptyBot.mainStage
     EmptyBot.run()
   }
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
   // Allows users to group by state a series of rules
   def state(stateName: State)(moves: ShortRule*): Seq[Rule] = {
     moves.map(r => Rule(stateName, r.s, r.m, r.state))
@@ -46,17 +33,10 @@ class ourDSL extends JFXApp {
 
   // Natural language method to set move direction
   def move(dir: MoveDirection): MoveDirection = dir
-<<<<<<< HEAD
   
   // Natural language method to set end state
   def to(end: String): State = end
   
-=======
-
-  // Natural language method to set end state
-  def to(end: String): State = end
-
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
   // Passes variatic MoveDirection and uses pattern matching to check using relative description
   // which direction is blocked
   def blocked(walls: MoveDirection*): OurSurroundings = {
@@ -71,11 +51,7 @@ class ourDSL extends JFXApp {
     }
     OurSurroundings(northWall, eastWall, westWall, southWall)
   }
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
   // Similar to blocked, but checks if the relative description is open
   def open(walls: MoveDirection*): OurSurroundings = {
     var northWall, eastWall, westWall, southWall: RelativeDescription = Anything
@@ -89,36 +65,21 @@ class ourDSL extends JFXApp {
     }
     OurSurroundings(northWall, eastWall, westWall, southWall)
   }
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
   // Casts a tuple to ShortRule
   implicit def tupletoShortRule(tuple: (Surroundings, MoveDirection, State)): ShortRule = {
     ShortRule(s = tuple._1, m = tuple._2, state = tuple._3)
   }
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
   // ShortRule expects a Surroundings, so we explicitly construct one from OurSurroundings.
   // Making an alternate constructor for ShortRule that takes an OurSurroundings didn't work for some reason (even though I tried using the 'new' keyword).
   implicit def tupletoShortRule2(tuple: (OurSurroundings, MoveDirection, State)): ShortRule = {
     ShortRule(s = Surroundings(tuple._1.north, tuple._1.east, tuple._1.west, tuple._1.south), m = tuple._2, state = tuple._3)
   }
-<<<<<<< HEAD
   
   // Implicit cast from string to State
   implicit def stringToState(state: String): State = State(state)
   
-=======
-
-  // Implicit cast from string to State
-  implicit def stringToState(state: String): State = State(state)
-
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
   // Default vals for natural language replacement of cardinal directions
   val left, west, w = West
   val up, north, n = North
@@ -136,18 +97,6 @@ class ourDSL extends JFXApp {
     defaultMove,
     defaultState)
 
-<<<<<<< HEAD
-//  def testRules(rules: Seq[Rule]) {
-//    println("number of rules: " + rules.length)
-//    println("first rule's surroundings: " + rules(0).surroundings)
-//  }
-//
-//  val test1 = state("start")(
-//    (blocked(East, West) & open(North), move(left), to("corner")),
-//    (open(North, West), move(left), to("corner")))
-//
-//  testRules(test1)
-=======
   //  def testRules(rules: Seq[Rule]) {
   //    println("number of rules: " + rules.length)
   //    println("first rule's surroundings: " + rules(0).surroundings)
@@ -158,7 +107,6 @@ class ourDSL extends JFXApp {
   //    (open(North, West), move(left), to("corner")))
   //
   //  testRules(test1)
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab
 }
 
 case class ShortRule(s: Surroundings, m: MoveDirection, state: State) {
@@ -186,18 +134,9 @@ case class OurSurroundings(north: RelativeDescription, east: RelativeDescription
 
     Surroundings(pickDir(this.north, other.north), pickDir(this.east, other.east), pickDir(this.west, other.west), pickDir(this.south, other.south))
   }
-<<<<<<< HEAD
-  
-  // Leverages + to allow for & binary operator
-  def &(other: OurSurroundings): Surroundings = {
-    this+other
-  }
-}
-=======
 
   // Leverages + to allow for & binary operator
   def &(other: OurSurroundings): Surroundings = {
     this + other
   }
 }
->>>>>>> 2fa971cad935338951810f2ce88bfef792b27dab

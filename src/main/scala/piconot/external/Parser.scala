@@ -4,7 +4,6 @@ import picolib.semantics._
 import piconot.internal._
 
 object PicoParser extends JavaTokenParsers with PackratParsers with App {
-
   // parsing interface
   def apply(s: String): ParseResult[Surroundings] = parseAll(surr, s)
 
