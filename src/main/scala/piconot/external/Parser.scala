@@ -7,13 +7,13 @@ object Parser extends JavaTokenParsers with PackratParsers {
   // parsing interface
   def apply(s: String): ParseResult[RuleExp] = parseAll(ruleExp, s)
 
-  lazy val ruleExp: PackratParser[RuleExp] =
-    (surAtom ^^ { case sur1 => test(sur1) })
-
-  lazy val surAtom: PackratParser[RuleExp] =
-    (sur)
-    
-    def sur: Parser[OurSur] =  "".r ^^ {OurSur(Anything, Anything, Anything, Anything)} 
+//  lazy val ruleExp: PackratParser[RuleExp] =
+//    (surAtom ^^ { case sur1 => test(sur1) })
+//
+//  lazy val surAtom: PackratParser[RuleExp] =
+//    (sur)
+//    
+//    def sur: Parser[OurSur] =  "".r ^^ {OurSur(Anything, Anything, Anything, Anything)} 
 }
     
 //    
