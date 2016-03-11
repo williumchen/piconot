@@ -29,7 +29,7 @@ way, so you'll also implement your syntax as an external DSL.)
   - [x] [Sign up for teams][Teams]. You'll work in pairs for this assignment
   - [x] Design a new syntax for Picobot 
      - [ ] Describe your design in `design.md`
-     - [ ] Before you implement the syntax, write the "empty room" program in
+     - [x] Before you implement the syntax, write the "empty room" program in
      `example-ideal.txt`
   - [x] Implement your new syntax as an internal DSL
      - [x] Add files, as needed, to implement your syntax
@@ -37,11 +37,11 @@ way, so you'll also implement your syntax as an external DSL.)
        - [x] `src/main/scala/piconot/internal/Empty.scala`
        - [x] `src/main/scala/piconot/internal/RightHand.scala`
      - [ ] Describe your implementation process in `evaluation.md`
-  - [ ] Implement your new syntax as an external DSL, using parser combinators
+  - [x] Implement your new syntax as an external DSL, using parser combinators
      - Include at least two example programs
-        - [ ] `src/main/scala/piconot/external/Empty.bot`
-        - [ ] `src/main/scala/piconot/external/RightHand.bot`
-     - [ ] Provide instructions for how to run piconot in `build.md`
+        - [x] `src/main/scala/piconot/external/Empty.bot`
+        - [x] `src/main/scala/piconot/external/RightHand.bot`
+     - [x] Provide instructions for how to run piconot in `build.md`
      - [ ] Describe your implementation process in `evaluation.md`
   - [ ] Critique another team's design and implementation
 
