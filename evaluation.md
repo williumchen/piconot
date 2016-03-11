@@ -31,6 +31,12 @@ Probably 7. We felt our syntax mapped pretty well to the provided API in that it
 _Describe each change from your ideal syntax to the syntax you implemented, and
 describe_ why _you made the change._
 
+The most difficult part of implementing the external DSL was figuring out the proper syntax for the parser.  We initially spent a couple hours struggling to create our own tokens (similar to the wholeNumber built-in token from the JavaTokensParser).  After looking at the sample solution, however, we realized we could just use the RegExParser and not deal with tokens.
+
+Once we had that figured out, implementing the parser was relatively straightforward.  We started from the bottom up, first implementing a parser for RelativeDescription, then for a Surrounding, then ShortRule (our internal representation of a Rule without the start state), etc.  Because we decided to group together states with the same start state (see example code), we had to write some methods that would take bundles of tuples (as an internal data structure) and output Rules, ShortRules, etc.  See ‘descDirSetToSurroundings’ and ‘stateShortsToRules’ from our Semantics.scala.
+
+We didn’t have to make many changes from our initial design, since we were just parsing strings with RegEx.  One change we did make was adding parenthesis around the destination state.  We did this purposefully so that it would look like a function/method like our ‘open()’, ‘move()’, etc methods.
+
 **On a scale of 1–10 (where 10 is "a lot"), how much did you have to change your syntax?**
 
 Probably 1. We didn't really have to change a lot of our syntax as using the regex parser pretty much got rid of all the parantheses we had earlier.
