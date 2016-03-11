@@ -16,6 +16,7 @@ import picolib.semantics._
  */
 
 class ourDSL extends JFXApp {
+
   // Initializes the picobot and runs graphics display
   def picobot(mazeName: String)(rules: Seq[Rule]*) = {
     val rulesList = rules.flatten.toList
@@ -96,17 +97,6 @@ class ourDSL extends JFXApp {
     defaultSurrounding,
     defaultMove,
     defaultState)
-
-  //  def testRules(rules: Seq[Rule]) {
-  //    println("number of rules: " + rules.length)
-  //    println("first rule's surroundings: " + rules(0).surroundings)
-  //  }
-  //
-  //  val test1 = state("start")(
-  //    (blocked(East, West) & open(North), move(left), to("corner")),
-  //    (open(North, West), move(left), to("corner")))
-  //
-  //  testRules(test1)
 }
 
 case class ShortRule(s: Surroundings, m: MoveDirection, state: State) {
