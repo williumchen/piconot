@@ -66,7 +66,7 @@ object Piconot extends JFXApp {
    */
   def checkErrors(bot: Picobot): Unit = {
 //    object checker extends DefaultChecker[Picobot]
-//      with MoveToWall with BoxedIn with UndefinedStates with UreachableStates
+//      with allBlocked
 //    val errors = checker.check(bot)
 //    if (!errors.isEmpty) {
 //      errors foreach println

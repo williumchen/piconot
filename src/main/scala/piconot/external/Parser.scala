@@ -5,8 +5,8 @@ import piconot.internal._
 import scala.tools.nsc.EvalLoop
 
 object PiconotParser extends JavaTokenParsers with PackratParsers with App {
-  def apply(s: String): ParseResult[List[Rule]] = parseAll(program, s)
-
+  def apply(s: String): ParseResult[List[Rule]] = parseAll(program, s) 
+  
   def program: PackratParser[List[Rule]] =
     (ruleSetSingle ~ program ^^ { case l ~ r => l ::: r }
       | ruleSetSingle)
