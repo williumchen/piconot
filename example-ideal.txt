@@ -1,0 +1,19 @@
+state left (
+  if open(west), move(left), to left
+  if blocked(west), move(up), to up
+)
+
+state up (
+  if open(north), move(up), to up
+  if blocked(north) and open(south), move(down), to fill
+)
+
+state fill (
+  if open(south), move(down), to up
+  if blocked(south) and open(east), move(right), to top
+)
+
+state top (
+  if open(north), move(up), to top
+  if blocked(north) and open(east), move(right), to fill
+)
