@@ -1,0 +1,20 @@
+state(north)(
+          if blocked(east) & open(north), move(up), to(north),
+          if blocked(north, east), move(stay), to(west),
+          if open(east), move(east), to(east)
+      ) 
+      state(east)(
+          if blocked(south) & open(right), move(right), to(east),
+          if blocked(east, south), move(stay), to(north),
+          if open(south), move(down), to(south)
+      )
+      state(west)(
+          if blocked(north) & open(west), move(west), to(west),
+          if blocked(north, west), move(stay), to(south),
+          if open(north), move(up), to(north)
+      )
+      state(south)(
+          if blocked(west) & open(south), move(south), to(south),
+          if blocked(south, west), move(stay), to(east),
+          if open(west), move(west), to(west)
+      )

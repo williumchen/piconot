@@ -25,4 +25,9 @@ package object semantics {
     }
     Surroundings(northWall, eastWall, westWall, southWall)
   }
+
+  //converts a list of short rules to a list of rules, each with @param state as the initial state.
+  def stateShortsToRules(state: State, shortRules: List[ShortRule]): List[Rule] = {
+    shortRules.map(s => Rule(state, s.s, s.m, s.state))
+  }
 }
