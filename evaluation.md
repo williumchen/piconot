@@ -33,4 +33,8 @@ describe_ why _you made the change._
 
 **On a scale of 1–10 (where 10 is "a lot"), how much did you have to change your syntax?**
 
+Probably 1. We didn't really have to change a lot of our syntax as using the regex parser pretty much got rid of all the parantheses we had earlier.
+
 **On a scale of 1–10 (where 10 is "very difficult"), how difficult was it to map your syntax to the provided API?**
+
+Probably 4. It was signficantly easier because we could use data structures that we created earlier for the internal DSL. This helped with the bundling structure we used for our DSL (a program consists of a series of states, which each consist of a series of rules, which consist of a series of surroundings, move directions, and end states). 
